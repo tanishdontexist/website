@@ -71,8 +71,8 @@ function applyTheme(theme) {
     if (exoHubImage) {
             exoHubImage.src =
                 theme === 'light'
-                    ? '/media/projects/light-exo-gui.png'
-                    : '/media/projects/exo-gui.png';
+                    ? '/media/projects/light-exo-gui.jpg'
+                    : '/media/projects/exo-gui.jpg';
     }
 }
 
