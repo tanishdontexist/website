@@ -24,7 +24,7 @@
 /* Remove darkening from the hovered card */
 .projects-grid:hover .project-card:hover {
     opacity: 1;
-    transform: scale(1.02);
+    transform: scale(1.01);
     box-shadow: var(--shadow-lg);
 }
 

@@ -1,0 +1,175 @@
+.skills-section {
+    margin-top: 8rem;
+}
+
+.skills-bento {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.bento-box {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    transition: var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Only dim others WHEN a bento box is hovered */
+.skills-bento:has(.bento-box:hover) .bento-box {
+    opacity: 0.4;
+}
+
+/* Remove darkening from the hovered box */
+.skills-bento:hover .bento-box:hover {
+    opacity: 1;
+    transform: scale(1.01);
+    box-shadow: var(--shadow-lg);
+}
+
+.bento-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: var(--transition-base);
+    z-index: 0;
+}
+
+.bento-box:hover::before {
+    opacity: 0.05;
+}
+
+.bento-small {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+.bento-swide {
+    grid-column: span 3;
+    grid-row: span 1;
+}
+.bento-large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+.bento-lang {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+.bento-medium {
+    grid-column: span 2;
+}
+
+.bento-wide {
+    grid-column: span 4;
+}
+
+.bento-title {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin: 0 0 20px 0;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    position: relative;
+    z-index: 1;
+}
+
+.bento-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.bento-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-md);
+    transition: var(--transition-base);
+    cursor: default;
+}
+
+.bento-item:hover {
+    transform: scale(1.05);
+}
+
+.bento-item img,
+.bento-item svg {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    transition: var(--transition-base);
+}
+
+/* Only dim others WHEN a bento box is hovered */
+.bento-box:has(.bento-item:hover) .bento-item {
+    opacity: 0.4;
+}
+
+/* Remove darkening from the hovered box */
+.bento-box:hover .bento-item:hover {
+    opacity: 1;
+    box-shadow: var(--shadow-lg);
+}
+  .bento-item:hover img,
+.bento-item:hover svg {
+    filter: grayscale(0%) brightness(1);
+} 
+
+.bento-item span {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+.bento-item svg.filmora {
+    transform: scale(0.83);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .skills-bento {
+        grid-template-columns: 1fr;
+    }
+    
+    .bento-large,
+    .bento-small,
+    .bento-lang,
+    .bento-swide,
+    .bento-medium,
+    .bento-wide {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+
+}
+
+@media (max-width: 640px) {
+    .skills-bento {
+        grid-template-columns: 1fr;
+    }
+    
+    .bento-large,
+    .bento-small,
+    .bento-lang,
+    .bento-swide,
+    .bento-medium,
+    .bento-wide {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+}

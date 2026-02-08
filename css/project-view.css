@@ -329,3 +329,30 @@ html {
     box-shadow: var(--shadow-md);
     transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
+
+.thoughts-view-image {
+    display: block;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;      /* FULL viewport width */
+    height: 25vh;
+    object-fit: cover;
+    animation: fadeIn 0.5s ease-out;
+}
+@media (max-width: 996px) {
+.thoughts-view-image {
+        height: 15vh; /* taller on smaller screens */
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

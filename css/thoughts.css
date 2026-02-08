@@ -1,0 +1,85 @@
+.thoughts-section-title {
+    font-family: "Italianno", cursive;
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    letter-spacing: 0.01em;
+}
+
+.thoughts-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.thoughts-card:nth-child(1) {
+    margin-bottom: 20px;
+}
+
+.thoughts-card {
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    color: var(--text-primary);
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.thoughts-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 55%;
+    transition: all 0.3s ease-in-out;
+}
+.thoughts-info {
+    position: relative;
+    z-index: 2;
+}
+
+.thoughts-card.has-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+.thoughts-card:hover .thoughts-bg {
+    opacity: 70%;
+}
+.thoughts-title {
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+}
+
+.thoughts-date {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* When hovering over the grid, dim all cards */
+.thoughts-grid:hover .thoughts-card {
+    opacity: 0.3;
+}
+
+/* Except the one being hovered */
+.thoughts-grid:hover .thoughts-card:hover {
+    opacity: 1;
+}
+
+.thoughts-title {
+    font-size: 0.90rem;
+    transition: color 0.3s ease;
+}
+
+.thoughts-date {
+    font-weight: 600;
+    margin-top: 0.5rem;
+    color: var(--text-tertiary);
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+}
