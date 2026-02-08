@@ -13,11 +13,12 @@
     gap: 0;
 }
 
-.thoughts-card:nth-child(1) {
-    margin-bottom: 20px;
+.thoughts-card:last-child {
+    margin-bottom: 0;
 }
 
 .thoughts-card {
+    margin-bottom: 1rem;
     text-decoration: none;
     position: relative;
     overflow: hidden;

@@ -275,7 +275,12 @@ body::before {
     color: var(--text-secondary);
     transition: color 0.2s ease;
 }
-
+.social-btn .discord {
+    transform: scale(0.85);
+}
+.social-btn .instagram {
+    transform: scale(0.85);
+}
 .social-btn {
     padding: 0.50rem 0.85rem;
     background-color: var(--bg-secondary);
