@@ -48,6 +48,7 @@
     --accent-from: #5c5cff;
     --accent-to: #764ba2;
 }
+
 /* Selection */
 ::selection {
     background-color: var(--accent-from);
