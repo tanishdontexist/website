@@ -11,7 +11,9 @@
     --text-tertiary: #c0c0c0;
     --text-muted: #a0a0a0;
     
-    --accent-from: #667eea;
+    --scrollbar-track: rgba(0, 0, 0);
+
+    --accent-from: #5c5cff;
     --accent-to: #764ba2;
     
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -41,6 +43,8 @@
     --text-tertiary: #404040;
     --text-muted: #666666;
     
+    --scrollbar-track: rgba(0, 0, 0);
+
     --accent-from: #5c5cff;
     --accent-to: #764ba2;
 }
@@ -55,13 +59,12 @@
     color: white;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-    width: 3px;
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
 }
 
-::-webkit-scrollbar-track {
-    background: var(--bg-primary);
+::-webkit-scrollbar {
+    width: 3px;
 }
 
 ::-webkit-scrollbar-thumb {
