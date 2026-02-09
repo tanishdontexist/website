@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Audio Player</title>
+  <script>
+    // Redirect if accessed directly (not from iframe)
+    if (window.self === window.top) {
+      window.location.href = '/404';
+    }
+  </script>
+</head>
+<body>
+<script>
+let audio = new Audio('/media/song.wav');
+audio.loop = true;
+let currentState = 'off';
+
+window.addEventListener('message', (event) => {
+  // Security check - only accept from same origin
+  if (event.origin !== window.location.origin) return;
+  
+  const { action, state, volume } = event.data;
+  
+  if (action === 'setState') {
+    currentState = state;
+    
+    if (state === 'off') {
+      audio.pause();
+      audio.volume = 0;
+    } else if (state === 'low') {
+      audio.volume = 0.1;
+      audio.play().catch(e => console.log(e));
+    } else if (state === 'high') {
+      audio.volume = 0.5;
+      audio.play().catch(e => console.log(e));
+    }
+    
+    // Send confirmation back
+    event.source.postMessage({ 
+      action: 'stateUpdated', 
+      state: currentState 
+    }, event.origin);
+  }
+  
+  if (action === 'getState') {
+    event.source.postMessage({ 
+      action: 'currentState', 
+      state: currentState 
+    }, event.origin);
+  }
+});
+
+// Notify parent that player is ready
+window.parent.postMessage({ action: 'playerReady' }, window.location.origin);
+</script>
+</body>
+</html>
