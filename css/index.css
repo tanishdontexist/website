@@ -238,28 +238,6 @@ body::before {
     margin-bottom: 0;
 }
 
-.company {
-    color: var(--text-primary);
-    font-weight: 500;
-    position: relative;
-    transition: color var(--transition-fast);
-}
-
-.company::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: linear-gradient(90deg, var(--accent-from), var(--accent-to));
-    transition: width var(--transition-base);
-}
-
-.company:hover::after {
-    width: 100%;
-}
-
 .social-links {
     color: var(--text-muted);
     display: flex;

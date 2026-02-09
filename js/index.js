@@ -146,3 +146,61 @@ function updateSoundIcon() {
     soundBtn.innerHTML = soundHighSVG;
   }
 }
+
+let activeClone = null;
+let originRect = null;
+
+document.querySelectorAll('.bento-images img').forEach(img => {
+    img.addEventListener('click', () => {
+        const lightbox = document.getElementById('image-lightbox');
+        const rect = img.getBoundingClientRect();
+        originRect = rect;
+
+        const clone = img.cloneNode();
+        activeClone = clone;
+
+        clone.classList.add('lightbox-clone');
+        clone.style.top = rect.top + 'px';
+        clone.style.left = rect.left + 'px';
+        clone.style.width = rect.width + 'px';
+        clone.style.height = rect.height + 'px';
+
+        document.body.appendChild(clone);
+        lightbox.classList.add('active');
+
+        // Force reflow
+        clone.getBoundingClientRect();
+
+        // Target centered position
+        const targetWidth = Math.min(window.innerWidth * 0.85, rect.width * 2.2);
+        const scale = targetWidth / rect.width;
+        const targetHeight = rect.height * scale;
+
+        clone.style.top = `calc(50% - ${targetHeight / 2}px)`;
+        clone.style.left = `calc(50% - ${targetWidth / 2}px)`;
+        clone.style.width = targetWidth + 'px';
+        clone.style.height = targetHeight + 'px';
+    });
+});
+
+document.getElementById('image-lightbox').addEventListener('click', closeLightbox);
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+});
+
+function closeLightbox() {
+    if (!activeClone) return;
+
+    const lightbox = document.getElementById('image-lightbox');
+    lightbox.classList.remove('active');
+
+    activeClone.style.top = originRect.top + 'px';
+    activeClone.style.left = originRect.left + 'px';
+    activeClone.style.width = originRect.width + 'px';
+    activeClone.style.height = originRect.height + 'px';
+
+    setTimeout(() => {
+        activeClone.remove();
+        activeClone = null;
+    }, 350);
+}
