@@ -41,7 +41,7 @@
     --text-tertiary: #404040;
     --text-muted: #666666;
     
-    --accent-from: #667eea;
+    --accent-from: #5c5cff;
     --accent-to: #764ba2;
 }
 /* Selection */
@@ -57,7 +57,7 @@
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 3px;
 }
 
 ::-webkit-scrollbar-track {
@@ -65,12 +65,11 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--bg-tertiary);
-    border-radius: var(--radius-sm);
+    background: var(--accent-from);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--border-secondary);
+    background: var(--text-primary);
 }
 * {
     margin: 0;
@@ -512,6 +511,104 @@ body::before {
     overflow: hidden;
 }
 
-.about-section {
+/* Enhanced Vertical text containers */
+.vertical-text-left,
+.vertical-text-right {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14rem; /* User's preference: larger and bolder */
+    font-weight: 900; /* User's preference: bold */
+    opacity: 0.1; /* User's preference: more visible */
+    pointer-events: none;
+    z-index: 0;
+    letter-spacing: 0.08em; /* Increased spacing for better readability */
+    user-select: none;
+    transition: opacity var(--transition-slow);
+}
+
+.vertical-text-left {
+    left: -3%; /* User's preference: flush to edge */
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    /* Gradient: darker at right (content side) to lighter at left */
+    background: linear-gradient(to right, var(--text-primary), var(--bg-primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    /* Add subtle glow for depth */
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.1));
+}
+
+.vertical-text-right {
+    right: -3%; /* User's preference: flush to edge */
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+    /* Gradient: darker at left (content side) to lighter at right */
+    background: linear-gradient(to left, var(--text-primary), var(--bg-primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    /* Add subtle glow for depth */
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.1));
+}
+
+/* Hide on smaller screens - User's preference */
+@media (max-width: 1321px) {
+    .vertical-text-left,
+    .vertical-text-right {
+        display: none;
+    }
+}
+
+/* Animation on page load */
+.vertical-text-left {
+    animation: fadeInFromBottom 0.5s ease-out forwards; /* User's preference: faster */
+}
+
+.vertical-text-right {
+    animation: fadeInFromTop 0.5s ease-out forwards; /* User's preference: faster */
+}
+
+@keyframes fadeInFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(50%) scale(0.95);
+    }
+    to {
+        opacity: 0.1; /* Match user's opacity preference */
+        transform: translateY(-50%) scale(1);
+    }
+}
+
+@keyframes fadeInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-150%) scale(0.95);
+    }
+    to {
+        opacity: 0.1; /* Match user's opacity preference */
+        transform: translateY(-50%) scale(1);
+    }
+}
+
+/* Light theme adjustments */
+[data-theme="light"] .vertical-text-left {
+    background: linear-gradient(to right, var(--text-primary), var(--bg-primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.05));
+}
+
+[data-theme="light"] .vertical-text-right {
+    background: linear-gradient(to left, var(--text-primary), var(--bg-primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.05));
+}
+
+.starfield-container {
     margin-top: 4rem;
 }

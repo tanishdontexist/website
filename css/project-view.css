@@ -58,7 +58,7 @@
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 3px;
 }
 
 ::-webkit-scrollbar-track {
@@ -66,12 +66,11 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--bg-tertiary);
-    border-radius: var(--radius-sm);
+    background: var(--accent-from);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--border-secondary);
+    background: var(--text-primary);
 }
 * {
     margin: 0;
